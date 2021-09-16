@@ -36,4 +36,4 @@ async def change_status():
     await client.change_presence(activity=discord.Game(next(status)))
 
 
-client.run('ODg3MTM3NTE3MDU1Mzg5NzA4.YT_xMg.Q_lr1CI8TM1MAW1XwGdFru-oz5U')
+client.run('ODg3MTM3NTE3MDU1Mzg5NzA4.YT_xMg.MSG-cY5XUINRr8AhCL7-VCdtzmk')
