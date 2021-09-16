@@ -1,5 +1,6 @@
 import random
 import discord
+import requests
 from discord.ext import commands
 
 
@@ -31,6 +32,24 @@ class fun(commands.Cog):
             await ctx.send("wtf poggies")
         else:
             await ctx.send("sad mongie")
+
+    @commands.command()
+    async def hug(self, ctx, member: discord.Member):
+        r = requests.get("https://nekos.life/api/v2/img/hug")
+        res = r.json()
+        embed = discord.Embed(title=f"{ctx.message.author} hugged {member}", color=discord.Colour.blurple())
+        embed.set_footer(text="made by Aquazarine#0001")
+        embed.set_image(url=res['url'])
+        await ctx.send(embed=embed)
+
+    @commands.command()
+    async def baka(self, ctx, member: discord.Member):
+        r = requests.get("https://nekos.life/api/v2/img/baka")
+        res = r.json()
+        embed = discord.Embed(title=f"{member} is sussy baka", color=discord.Colour.blurple())
+        embed.set_footer(text="made by Aquazarine#0001")
+        embed.set_image(url=res['url'])
+        await ctx.send(embed=embed)
 
 
 def setup(client):

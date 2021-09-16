@@ -1,4 +1,7 @@
+import urllib
+
 import discord
+import requests
 from discord.ext import commands
 from discord.ext.commands import MissingPermissions, has_permissions
 
@@ -14,9 +17,6 @@ class utils(commands.Cog):
             await ctx.message.author.edit(nick=None)
         else:
             await ctx.message.author.edit(nick=nick)
-
-
-
 
 
 def setup(client):
