@@ -1,10 +1,12 @@
+import shelve
+
 import discord
 from discord.ext import commands, tasks
 import os
 from itertools import cycle
 
 client = commands.Bot(command_prefix='-')
-status = cycle(['being sus', 'sus like impostor', 'am sus', 'is sus'])
+status = cycle(['being sus', 'sus like impostor', 'am sus', 'is sus', 'among sussy', 'being best bot', 'peeing', 'playing mongie'])
 
 
 @client.command()

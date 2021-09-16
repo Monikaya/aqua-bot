@@ -17,8 +17,20 @@ class fun(commands.Cog):
         responses = ['noe',
                      'literally no',
                      'sure idk',
-                     'nope']
+                     'nope',
+                     'only sometimes'
+                     'yk',
+                     'yes but also no',
+                     'depends',]
         await ctx.send(f'{random.choice(responses)}')
+
+    @commands.command()
+    async def among(self, ctx):
+        poggie = ctx.message.author.id == 870357758208274463
+        if poggie:
+            await ctx.send("wtf poggies")
+        else:
+            await ctx.send("sad mongie")
 
 
 def setup(client):
