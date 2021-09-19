@@ -5,6 +5,8 @@ from discord.ext import commands
 import aiohttp
 from discord.ext.commands import is_nsfw
 
+from main import client
+
 
 class nsfw(commands.Cog):
 
@@ -38,7 +40,7 @@ class nsfw(commands.Cog):
 
 
     @commands.command()
-    async def feet(self, ctx):
+    async def feet(self, ctx, *, bypass=None):
         channelnsfw = ctx.channel.is_nsfw()
         if channelnsfw:
             r = requests.get("https://nekos.life/api/v2/img/feetg")
@@ -47,7 +49,15 @@ class nsfw(commands.Cog):
             embed.set_image(url=res['url'])
             await ctx.send(embed=embed)
         else:
-            await ctx.send("you aren't in nsfw channel")
+            if bypass == "auqabypasshot":
+                await ctx.channel.purge(limit=1)
+                r = requests.get("https://nekos.life/api/v2/img/feetg")
+                res = r.json()
+                embed = discord.Embed(title="feet. wtf.", color=discord.Colour.red())
+                embed.set_image(url=res['url'])
+                await ctx.send(embed=embed)
+            else:
+                await ctx.send("you aren't in nsfw channel")
 
 
     @commands.command()

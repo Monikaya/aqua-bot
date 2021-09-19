@@ -3,7 +3,6 @@ import discord
 import requests
 from discord.ext import commands
 
-
 class fun(commands.Cog):
 
     def __init__(self, client):
