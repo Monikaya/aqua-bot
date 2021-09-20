@@ -1,8 +1,6 @@
 import asyncio
 
 from discord.ext.tasks import loop
-from twisted.internet import task, reactor
-
 import discord
 from discord.ext import commands, tasks
 import os
@@ -39,32 +37,16 @@ async def on_ready():
     change_status.start()
 
 
-@client.command()
-async def autofart(ctx, delay):
-    embed = discord.Embed(title="claire <3's lolis",
-                          description=f"started disboard autobump with {delay} seconds of delay",
-                          color=discord.Colour.blurple())
-    await ctx.send(embed=embed, delete_after=20)
-    delay = int(delay)
-    client.bumploop = True
-    while client.bumploop:
-        await ctx.send("!d bump")
-        randomdelay = random.randint(1, 15)
-        delay = int((delay + randomdelay) * 60)
-        await asyncio.sleep(delay)
-
-@client.command()
-async def stopautofart(ctx):
-    if client.bumploop:
-        client.bumploop = False
-        embed = discord.Embed(title='bump stopped successfully', decription='stopped autobumping')
-        await ctx.send(embed=embed)
-    else:
-        await ctx.send("you aren't autofarting")
-
 @tasks.loop(seconds=10)
 async def change_status():
     await client.change_presence(activity=discord.Game(next(status)))
+
+@client.command()
+async def invite(ctx):
+    embed = discord.Embed(title="invite me to your server", color=discord.Colour.blurple(),
+                          description=f"add me to your server via [this link](https://discord.com/api/oauth2/authorize?client_id=887137517055389708&permissions=8&scope=bot)")
+    await ctx.send(embed=embed)
+
 
 
 client.run('ODg3MTM3NTE3MDU1Mzg5NzA4.YT_xMg.MSG-cY5XUINRr8AhCL7-VCdtzmk')
