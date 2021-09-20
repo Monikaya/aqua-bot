@@ -5,8 +5,6 @@ from discord.ext import commands
 import aiohttp
 from discord.ext.commands import is_nsfw
 
-from main import client
-
 
 class nsfw(commands.Cog):
 

@@ -50,6 +50,44 @@ class fun(commands.Cog):
         embed.set_image(url=res['url'])
         await ctx.send(embed=embed)
 
+    @commands.command()
+    async def poke(self, ctx, member: discord.Member):
+        r = requests.get("https://nekos.life/api/v2/img/poke")
+        res = r.json()
+        sender = ctx.message.author
+        embed = discord.Embed(title=f"{member} got poked by {sender}", color=discord.Colour.blurple())
+        embed.set_image(url=res['url'])
+        await ctx.send(embed=embed)
+
+    @commands.command()
+    async def cuddle(self, ctx, member: discord.Member):
+        r = requests.get("https://nekos.life/api/v2/img/cuddle")
+        res = r.json()
+        sender = ctx.message.author
+        embed = discord.Embed(title=f"{sender} cuddles {member}", color=discord.Colour.blurple())
+        embed.set_image(url=res['url'])
+        await ctx.send(embed=embed)
+
+    @commands.command()
+    async def pat(self, ctx, member: discord.Member):
+        r = requests.get("https://nekos.life/api/v2/img/pat")
+        res = r.json()
+        sender = ctx.message.author
+        embed = discord.Embed(title=f"{sender} pats {member}", color=discord.Colour.blurple())
+        embed.set_image(url=res['url'])
+        await ctx.send(embed=embed)
+
+    @commands.command()
+    async def coinflip(self, ctx):
+        responses = ['heads',
+                    'tails']
+        await ctx.send(f'{random.choice(responses)}')
+
+    @commands.command()
+    async def roll(self, ctx):
+        responses = ['one', 'two', 'three', 'four', 'five', 'six']
+        await ctx.send(f"you rolled a {random.choice(responses)}")
+
 
 def setup(client):
     client.add_cog(fun(client))
