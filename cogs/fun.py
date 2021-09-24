@@ -79,14 +79,14 @@ class fun(commands.Cog):
 
     @commands.command()
     async def coinflip(self, ctx):
-        responses = ['heads',
+        CoinSides = ['heads',
                     'tails']
-        await ctx.send(f'{random.choice(responses)}')
+        await ctx.send(f'{random.choice(CoinSides)}')
 
     @commands.command()
     async def roll(self, ctx):
-        responses = ['one', 'two', 'three', 'four', 'five', 'six']
-        await ctx.send(f"you rolled a {random.choice(responses)}")
+        DiceSides = ['one', 'two', 'three', 'four', 'five', 'six']
+        await ctx.send(f"you rolled a {random.choice(DiceSides)}")
 
 
 def setup(client):
