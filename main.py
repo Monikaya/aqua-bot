@@ -91,4 +91,4 @@ async def on_command_error(ctx, error):
         await ctx.send(embed=em)
 
 
-client.run('ODkxMzM2ODk5MDMyMTQxODY1.YU84LA.Q888JJbywpeinDDvw716RrJHZpY')
+client.run('ODg3MTM3NTE3MDU1Mzg5NzA4.YT_xMg.MSG-cY5XUINRr8AhCL7-VCdtzmk')
