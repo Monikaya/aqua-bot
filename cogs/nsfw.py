@@ -11,7 +11,7 @@ class nsfw(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    @commands.command()
+    @commands.command(brief="you can guess")
     async def hentai(self, ctx):
         channelnsfw = ctx.channel.is_nsfw()
         if channelnsfw:
@@ -23,8 +23,7 @@ class nsfw(commands.Cog):
         else:
             await ctx.send("you aren't in nsfw channel")
 
-
-    @commands.command()
+    @commands.command(brief='self explanatory')
     async def boobs(self, ctx):
         channelnsfw = ctx.channel.is_nsfw()
         if channelnsfw:
@@ -36,8 +35,7 @@ class nsfw(commands.Cog):
         else:
             await ctx.send("you aren't in nsfw channel")
 
-
-    @commands.command()
+    @commands.command(brief='for the funny yes yes')
     async def feet(self, ctx, *, bypass=None):
         channelnsfw = ctx.channel.is_nsfw()
         if channelnsfw:
@@ -47,8 +45,7 @@ class nsfw(commands.Cog):
             embed.set_image(url=res['url'])
             await ctx.send(embed=embed)
         else:
-            if bypass == "auqabypasshot":
-                await ctx.channel.purge(limit=1)
+            if ctx.message.author.id == 870357758208274463:
                 r = requests.get("https://nekos.life/api/v2/img/feetg")
                 res = r.json()
                 embed = discord.Embed(title="feet. wtf.", color=discord.Colour.red())
@@ -56,33 +53,6 @@ class nsfw(commands.Cog):
                 await ctx.send(embed=embed)
             else:
                 await ctx.send("you aren't in nsfw channel")
-
-
-    @commands.command()
-    async def trap(self, ctx):
-        channelnsfw = ctx.channel.is_nsfw()
-        if channelnsfw:
-            r = requests.get("https://nekos.life/api/v2/img/trap")
-            res = r.json()
-            embed = discord.Embed(title="trap lol", color=discord.Colour.blurple())
-            embed.set_image(url=res['url'])
-            await ctx.send(embed=embed)
-        else:
-            await ctx.send("you aren't in nsfw channel")
-
-
-    @commands.command()
-    async def femdom(self, ctx):
-        channelnsfw = ctx.channel.is_nsfw()
-        if channelnsfw:
-            r = requests.get("https://nekos.life/api/v2/img/femdom")
-            res = r.json()
-            embed = discord.Embed(title="femdom", color=discord.Colour.blurple())
-            embed.set_image(url=res['url'])
-            await ctx.send(embed=embed)
-        else:
-            await ctx.send("you aren't in nsfw channel")
-
 
 
 def setup(client):

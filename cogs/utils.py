@@ -10,14 +10,20 @@ class utils(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    @commands.command()
+    @commands.command(brief='changes your nickname')
+    @has_permissions(change_nickname=True)
     async def nick(self, ctx, *, nick):
         if nick == 'reset':
             await ctx.message.author.edit(nick=None)
         else:
             await ctx.message.author.edit(nick=nick)
 
-    @commands.command()
+    @nick.error
+    async def nick_error(self, ctx):
+        if isinstance(error, MissingPermissions):
+            await ctx.send("you don't have perms </3")
+
+    @commands.command(brief='changes bot prefix')
     @has_permissions(administrator=True)
     async def changeprefix(self, ctx, prefix):
 
@@ -38,6 +44,11 @@ class utils(commands.Cog):
         if isinstance(error, MissingPermissions):
             await ctx.send("you don't have perms lol")
 
+    @commands.command(brief='invite code for bot')
+    async def invite(self, ctx):
+        embed = discord.Embed(title="invite me to your server", color=discord.Colour.blurple(),
+                              description=f"add me to your server via [this link](https://discord.com/api/oauth2/authorize?client_id=887137517055389708&permissions=8&scope=bot)")
+        await ctx.send(embed=embed)
 
 
 def setup(client):

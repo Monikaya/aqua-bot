@@ -5,6 +5,7 @@ from discord.ext import commands, tasks
 import os
 from itertools import cycle
 import json
+from pretty_help import PrettyHelp, DefaultMenu
 
 
 def get_prefix(client, message):
@@ -20,14 +21,15 @@ def get_prefix(client, message):
         return prefixes[str(666)]
 
 
-client = commands.Bot(command_prefix=get_prefix)
-bot = client
+menu = DefaultMenu(delete_after_timeout=True, active_time=60)
+
+client = commands.Bot(command_prefix=get_prefix, help_command=PrettyHelp(color=discord.Colour.blurple(), menu=menu))
 
 status = cycle(
     ['being sus', 'sus like impostor', 'am sus', 'is sus', 'among sussy', 'being best bot', 'peeing', 'playing mongie'])
 
 
-@client.command()
+@client.command(hidden=True)
 async def load(ctx, extension):
     poggie = ctx.message.author.id == 870357758208274463
     if poggie:
@@ -35,7 +37,7 @@ async def load(ctx, extension):
         await ctx.send("successfully loaded")
 
 
-@client.command()
+@client.command(hidden=True)
 async def unload(ctx, extension):
     poggie = ctx.message.author.id == 870357758208274463
     if poggie:
@@ -80,13 +82,6 @@ async def change_status():
     await client.change_presence(activity=discord.Game(next(status)))
 
 
-@client.command()
-async def invite(ctx):
-    embed = discord.Embed(title="invite me to your server", color=discord.Colour.blurple(),
-                          description=f"add me to your server via [this link](https://discord.com/api/oauth2/authorize?client_id=887137517055389708&permissions=8&scope=bot)")
-    await ctx.send(embed=embed)
-
-
 @client.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound):
@@ -94,5 +89,4 @@ async def on_command_error(ctx, error):
         await ctx.send(embed=em)
 
 
-
-client.run('ODg3MTM3NTE3MDU1Mzg5NzA4.YT_xMg.MSG-cY5XUINRr8AhCL7-VCdtzmk')
+client.run('ODkxMzM2ODk5MDMyMTQxODY1.YU84LA.Q888JJbywpeinDDvw716RrJHZpY')
