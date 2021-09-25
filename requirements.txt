@@ -1,0 +1,6 @@
+discord~=1.7.3
+requests~=2.26.0
+aiohttp~=3.7.4.post0
+pip~=21.2.4
+wheel~=0.37.0
+setuptools~=57.4.0
