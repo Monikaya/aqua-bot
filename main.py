@@ -20,7 +20,6 @@ def get_prefix(client, message):
         return prefixes[str(666)]
 
 
-
 client = commands.Bot(command_prefix=get_prefix)
 bot = client
 
@@ -86,6 +85,14 @@ async def invite(ctx):
     embed = discord.Embed(title="invite me to your server", color=discord.Colour.blurple(),
                           description=f"add me to your server via [this link](https://discord.com/api/oauth2/authorize?client_id=887137517055389708&permissions=8&scope=bot)")
     await ctx.send(embed=embed)
+
+
+@client.event
+async def on_command_error(ctx, error):
+    if isinstance(error, commands.CommandNotFound):
+        em = discord.Embed(title=f"invalid command", description=f"command not found lolmao", color=ctx.author.color)
+        await ctx.send(embed=em)
+
 
 
 client.run('ODg3MTM3NTE3MDU1Mzg5NzA4.YT_xMg.MSG-cY5XUINRr8AhCL7-VCdtzmk')
