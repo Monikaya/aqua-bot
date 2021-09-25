@@ -1,11 +1,12 @@
-import asyncio
-from discord.ext.tasks import loop
 import discord
 from discord.ext import commands, tasks
 import os
 from itertools import cycle
 import json
 from pretty_help import PrettyHelp, DefaultMenu
+import mysql.connector
+from mysql.connector import Error
+import pandas as pd
 
 
 def get_prefix(client, message):
@@ -85,7 +86,8 @@ async def change_status():
 @client.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound):
-        em = discord.Embed(title=f"invalid command", description=f"command not found lolmao", color=ctx.author.color)
+        em = discord.Embed(title=f"invalid command", description=f"command not found lolmao",
+                           color=discord.Colour.blurple())
         await ctx.send(embed=em)
 
 
