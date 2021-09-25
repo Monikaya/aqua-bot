@@ -8,16 +8,21 @@ import json
 
 
 def get_prefix(client, message):
+    try:
+        with open('prefixes.json', 'r') as f:
+            prefixes = json.load(f)
 
-    with open('prefixes.json', 'r') as f:
-        prefixes = json.load(f)
+        return prefixes[str(message.guild.id)]
+    except KeyError:
+        with open('prefixes.json', 'r') as f:
+            prefixes = json.load(f)
 
-    return prefixes[str(message.guild.id)]
+        return prefixes[str(666)]
 
 
 
 client = commands.Bot(command_prefix=get_prefix)
-
+bot = client
 
 status = cycle(
     ['being sus', 'sus like impostor', 'am sus', 'is sus', 'among sussy', 'being best bot', 'peeing', 'playing mongie'])
@@ -69,6 +74,7 @@ async def on_guild_remove(guild):
 
     with open("prefixes.json", "w") as f:
         json.dump(prefixes, f, indent=4)
+
 
 @tasks.loop(seconds=10)
 async def change_status():

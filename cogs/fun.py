@@ -88,6 +88,10 @@ class fun(commands.Cog):
         DiceSides = ['one', 'two', 'three', 'four', 'five', 'six']
         await ctx.send(f"you rolled a {random.choice(DiceSides)}")
 
+    @commands.command()
+    async def troll(self, ctx):
+        await ctx.send("https://clipartcraft.com/images/troll-face-transparent-1.png")
+
 
 def setup(client):
     client.add_cog(fun(client))
