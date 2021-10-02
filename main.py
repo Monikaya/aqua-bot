@@ -4,9 +4,6 @@ import os
 from itertools import cycle
 import json
 from pretty_help import PrettyHelp, DefaultMenu
-import mysql.connector
-from mysql.connector import Error
-import pandas as pd
 
 
 def get_prefix(client, message):

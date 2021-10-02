@@ -1,5 +1,4 @@
 import json
-
 import discord
 from discord.ext import commands
 from discord.ext.commands import has_permissions, MissingPermissions
@@ -13,10 +12,15 @@ class utils(commands.Cog):
     @commands.command(brief='changes your nickname')
     @has_permissions(change_nickname=True)
     async def nick(self, ctx, *, nick):
+        embed = discord.Embed(title="nickname changed", description=f"nick sucessfully changed to {nick}",
+                              color=discord.Colour.blurple())
         if nick == 'reset':
             await ctx.message.author.edit(nick=None)
+            embed.description = f"nick reset"
+            await ctx.send(embed=embed)
         else:
             await ctx.message.author.edit(nick=nick)
+            await ctx.send(embed=embed)
 
     @nick.error
     async def nick_error(self, ctx):
