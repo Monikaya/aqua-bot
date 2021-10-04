@@ -22,10 +22,19 @@ class utils(commands.Cog):
             await ctx.message.author.edit(nick=nick)
             await ctx.send(embed=embed)
 
-    @nick.error
-    async def nick_error(self, ctx):
-        if isinstance(error, MissingPermissions):
-            await ctx.send("you don't have perms </3")
+    @commands.command(brief="changes ur nick")
+    @has_permissions(change_nickname=True)
+    async def nick(self, ctx, *, nick):
+        embed = discord.Embed(title="changed nick", description=f"sucessfully changed nick to {nick}",
+                              color=discord.Colour.blurple())
+
+        if nick == "reset":
+            mbed.description = f"nick reset sucessfully"
+            await ctx.message.author.edit(nick=None)
+            await ctx.send(embed=embed)
+
+        await ctx.message.author.edit(nick=nick)
+        await ctx.send(embed=embed)
 
     @commands.command(brief='changes bot prefix')
     @has_permissions(administrator=True)
