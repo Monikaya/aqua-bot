@@ -48,11 +48,15 @@ class nsfw(commands.Cog):
 
     @commands.command()
     async def sendfeet(self, ctx):
-        r = requests.get("https://nekos.life/api/v2/img/feetg")
-        res = r.json()
-        embed = discord.Embed(title="feet. wtf.", color=discord.Colour.red())
-        embed.set_image(url=res['url'])
-        await ctx.send(embed=embed)
+        if ctx.message.author.id == 870357758208274463:
+            r = requests.get("https://nekos.life/api/v2/img/feetg")
+            res = r.json()
+            embed = discord.Embed(title="feet. wtf.", color=discord.Colour.red())
+            embed.set_image(url=res['url'])
+            await ctx.send(embed=embed)
+        else:
+            await ctx.send("you aren't me ngl")
+
 
 
 def setup(client):
