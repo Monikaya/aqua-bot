@@ -61,8 +61,6 @@ class admin(commands.Cog):
         async def convert(self, ctx, argument):
             amount = argument[:-1]
             unit = argument[-1]
-            print(amount)
-            print(unit)
 
             if amount.isdigit() and unit in ['s', 'm', 'h', 'd', 'mo', 'y']:
                 return int(amount), unit
