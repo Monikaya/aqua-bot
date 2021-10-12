@@ -4,8 +4,16 @@ import os
 from itertools import cycle
 import json
 from pretty_help import PrettyHelp, DefaultMenu
+import mysql.connector
 
-#go away
+db = mysql.connector.connect(
+    host="ger-by-mysql.rawpower.network",
+    port="3306",
+    user="u7298_hMO2hFNjMI",
+    password="=2BattYgeQqtxxNE=dHY^T9C"
+)
+
+cursor = db.cursor()
 
 def get_prefix(client, message):
     try:
