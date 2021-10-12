@@ -5,6 +5,7 @@ from itertools import cycle
 import json
 from pretty_help import PrettyHelp, DefaultMenu
 
+#go away
 
 def get_prefix(client, message):
     try:
