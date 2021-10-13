@@ -17,6 +17,8 @@ import requests
 
 from plyer import notification
 
+sussy = True
+
 c = requests.get("https://api.hypixel.net/skyblock/auctions?page=0")
 resp = c.json()
 now = resp['lastUpdated']
@@ -39,7 +41,7 @@ REFORGES = [" ✦", "⚚ ", " ✪", "✪", "Stiff ", "Lucky ", "Jerry's ", "Dirt
             "Unpleasant ", "Zealous "]
 
 # Constant for the lowest priced item you want to be shown to you; feel free to change this
-LOWEST_PRICE = 999999
+LOWEST_PRICE = 500000
 #conar likes men
 
 # Constant to turn on/off desktop notifications
@@ -109,6 +111,10 @@ def main():
     webhook = Webhook.partial(897637962618138666,
                               "s8YfsAm1AmG0gSMA8t1dbshHlFZ1s_q5l37rKtJu_zzYb6pMSEymNzFHjReA_bIKk66b",
                               adapter=RequestsWebhookAdapter())
+    global sussy
+    if sussy:
+        webhook.send("starting up", username="Aqua Skyblock Sniper", avatar_url="https://cdn.discordapp.com/attachments/875661506887426088/897269923636715541/amongie.jpg")
+        sussy = False
     # Resets variables
     global results, prices, START_TIME
     START_TIME = default_timer()
@@ -139,16 +145,11 @@ def main():
 
         done = default_timer() - START_TIME
         for result in results:
-            embed = discord.Embed(title="found stuff",
-                                  description="Auction UUID: " + str(result[0][0]) + "\n Item Name: " + str(
+            embed = discord.Embed(description="Auction UUID: " + str(result[0][0]) + "\n Item Name: " + str(
                                       result[0][1]) + "\n Item price: {:,}".format(result[0][2]),
                                   color=discord.Colour.blurple())
-            webhook.send(embed=embed, username="aqua skyblock sniper",
+            webhook.send(embed=embed, username="Aqua Skyblock Sniper",
                          avatar_url="https://cdn.discordapp.com/attachments/875661506887426088/897269923636715541/amongie.jpg")
-        webhook.send("looking for more now so stfu", username="aqua skyblock sniper",
-                     avatar_url="https://cdn.discordapp.com/attachments/875661506887426088/897269923636715541/amongie.jpg")
-
-        asyncio.run(main())
 
 
 
@@ -173,6 +174,11 @@ class pp(commands.Cog):
 
     def __init__(self, client):
         self.client = client
+
+    @commands.command()
+    async def skysniperestart(self, ctx):
+        await ctx.send("starting??")
+        main()
 
 
 if True:
