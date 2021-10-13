@@ -39,7 +39,7 @@ REFORGES = [" ✦", "⚚ ", " ✪", "✪", "Stiff ", "Lucky ", "Jerry's ", "Dirt
             "Unpleasant ", "Zealous "]
 
 # Constant for the lowest priced item you want to be shown to you; feel free to change this
-LOWEST_PRICE = 1000000
+LOWEST_PRICE = 999999
 
 # Constant to turn on/off desktop notifications
 NOTIFY = False
