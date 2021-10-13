@@ -8,3 +8,5 @@ pynacl
 youtube_dl
 ffmpeg
 discord-pretty-help
+pandas==1.3.2
+plyer==2.0.0
