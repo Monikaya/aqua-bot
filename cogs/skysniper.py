@@ -105,7 +105,6 @@ async def get_data_asynchronous():
 
 
 def main():
-    print("sussy1")
     webhook = Webhook.partial(897637962618138666,
                               "s8YfsAm1AmG0gSMA8t1dbshHlFZ1s_q5l37rKtJu_zzYb6pMSEymNzFHjReA_bIKk66b",
                               adapter=RequestsWebhookAdapter())
@@ -119,13 +118,11 @@ def main():
     asyncio.set_event_loop(loop)
     future = asyncio.ensure_future(get_data_asynchronous())
     loop.run_until_complete(future)
-    print("sussy3")
 
     # Makes sure all the results are still up to date
     if len(results): results = [[entry, prices[entry[3]][1]] for entry in results if (
             entry[2] > LOWEST_PRICE and prices[entry[3]][1] != float('inf') and prices[entry[3]][0] == entry[2] and
             prices[entry[3]][0] / prices[entry[3]][1] < LOWEST_PERCENT_MARGIN)]
-    print("sussy4")
 
     if len(results):  # if there's results to print
 
@@ -150,7 +147,6 @@ def main():
         webhook.send("looking for more now so stfu", username="aqua skyblock sniper",
                      avatar_url="https://cdn.discordapp.com/attachments/875661506887426088/897269923636715541/amongie.jpg")
 
-        print("sussy2")
         asyncio.run(main())
 
 
