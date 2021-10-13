@@ -41,7 +41,7 @@ REFORGES = [" ✦", "⚚ ", " ✪", "✪", "Stiff ", "Lucky ", "Jerry's ", "Dirt
             "Unpleasant ", "Zealous "]
 
 # Constant for the lowest priced item you want to be shown to you; feel free to change this
-LOWEST_PRICE = 500000
+LOWEST_PRICE = 200000
 #conar likes men
 
 # Constant to turn on/off desktop notifications
@@ -150,6 +150,8 @@ def main():
                                   color=discord.Colour.blurple())
             webhook.send(embed=embed, username="Aqua Skyblock Sniper",
                          avatar_url="https://cdn.discordapp.com/attachments/875661506887426088/897269923636715541/amongie.jpg")
+            print("Auction UUID: " + str(result[0][0]) + "\n Item Name: " + str(
+                                      result[0][1]) + "\n Item price: {:,}".format(result[0][2]))
 
 
 
