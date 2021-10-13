@@ -1,6 +1,10 @@
+import asyncio
 import discord
 from discord.ext import commands, tasks
 import logging
+
+def gaysex():
+    asyncio.run(peepee())
 
 
 class StartUp(commands.Cog):
@@ -9,7 +13,7 @@ class StartUp(commands.Cog):
         self.client = client
 
     logger = logging.getLogger('discord')
-    logger.setLevel(logging.WARNING)
+    logger.setLevel(logging.ERROR)
     handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
     handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
     logger.addHandler(handler)
@@ -17,6 +21,7 @@ class StartUp(commands.Cog):
     @commands.Cog.listener()
     async def on_ready(self):
         print('am online')
+
 
 
 def setup(client):

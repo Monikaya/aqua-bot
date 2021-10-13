@@ -41,10 +41,7 @@ class nsfw(commands.Cog):
         if channelnsfw:
             await ctx.invoke(self.client.get_command('sendfeet'))
         else:
-            if ctx.message.author.id == 870357758208274463:
-                await ctx.invoke(self.client.get_command('sendfeet'))
-            else:
-                await ctx.send("you aren't in nsfw channel")
+            await ctx.send("you aren't in nsfw channel")
 
     @commands.command()
     async def sendfeet(self, ctx):
