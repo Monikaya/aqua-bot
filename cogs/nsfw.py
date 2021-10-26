@@ -43,7 +43,7 @@ class nsfw(commands.Cog):
         else:
             await ctx.send("you aren't in nsfw channel")
 
-    @commands.command()
+    @commands.command(hidden=True)
     async def sendfeet(self, ctx):
         if ctx.message.author.id == 870357758208274463:
             r = requests.get("https://nekos.life/api/v2/img/feetg")
