@@ -313,7 +313,6 @@ class music(commands.Cog):
         ctx.voice_state.voice = await destination.connect()
 
     @commands.command(name='leave', aliases=['disconnect', 'die'])
-    @commands.has_permissions(manage_guild=True)
     async def _leave(self, ctx: commands.Context):
         """Clears the queue and leaves the voice channel."""
 
@@ -343,7 +342,6 @@ class music(commands.Cog):
         await ctx.send(embed=ctx.voice_state.current.create_embed())
 
     @commands.command(name='pause')
-    @commands.has_permissions(manage_guild=True)
     async def _pause(self, ctx: commands.Context):
         """Pauses the currently playing song."""
 
@@ -389,11 +387,11 @@ class music(commands.Cog):
             ctx.voice_state.skip_votes.add(voter.id)
             total_votes = len(ctx.voice_state.skip_votes)
 
-            if total_votes >= 3:
+            if total_votes >= 2:
                 await ctx.message.add_reaction('⏭')
                 ctx.voice_state.skip()
             else:
-                await ctx.send('Skip vote added, currently at **{}/3**'.format(total_votes))
+                await ctx.send('Skip vote added, currently at **{}/2**'.format(total_votes))
 
         else:
             await ctx.send('You have already voted to skip this song.')
