@@ -2,6 +2,8 @@ import random
 import discord
 import requests
 from discord.ext import commands
+from discord import Webhook, AsyncWebhookAdapter
+from discord import *
 
 class fun(commands.Cog):
 
@@ -91,6 +93,15 @@ class fun(commands.Cog):
     @commands.command(brief='troll lol', hidden=True)
     async def troll(self, ctx):
         await ctx.send("https://clipartcraft.com/images/troll-face-transparent-1.png")
+
+    @commands.command(brief='rly cool')
+    async def embarrass(self, ctx, member):
+        print("piss")
+        pfp = member.avatar_url
+        print(pfp)
+        weebhook = await ctx.create_webhook(name="member", avatar=pfp)
+        await ctx.send("pee")
+        print(weebhook)
 
 
 def setup(client):
