@@ -9,7 +9,7 @@ from discord.ext.commands import is_nsfw
 class nsfw(commands.Cog):
 
     def __init__(self, client):
-        self.client = client
+        self.clicent = client
 
     @commands.command(brief="you can guess")
     async def hentai(self, ctx):
