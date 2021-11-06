@@ -1,7 +1,11 @@
 import json
+import threading
+import time
+
 import discord
 from discord.ext import commands
 from discord.ext.commands import has_permissions, MissingPermissions
+from kahot import join
 
 
 class utils(commands.Cog):
@@ -16,7 +20,7 @@ class utils(commands.Cog):
                               color=discord.Colour.blurple())
 
         if nick == "reset":
-            mbed.description = f"nick reset sucessfully"
+            embed.description = f"nick reset sucessfully"
             await ctx.message.author.edit(nick=None)
             await ctx.send(embed=embed)
 
@@ -49,6 +53,19 @@ class utils(commands.Cog):
         embed = discord.Embed(title="invite me to your server", color=discord.Colour.blurple(),
                               description=f"add me to your server via [this link](https://discord.com/api/oauth2/authorize?client_id=887137517055389708&permissions=8&scope=bot)")
         await ctx.send(embed=embed)
+
+    @commands.command()
+    async def kahot(self, ctx, code, user, instances):
+        await ctx.send("starting kahot spam")
+        thread_list = list()
+        instances = int(instances)
+        for i in range(instances):
+            t = threading.Thread(target=join, args=(code, user))
+            t.start()
+            time.sleep(0.3)
+            thread_list.append(t)
+        for thread in thread_list:
+            thread.join()
 
 
 def setup(client):
