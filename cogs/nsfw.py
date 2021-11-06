@@ -66,6 +66,15 @@ class nsfw(commands.Cog):
         embed.set_image(url=res['url'])
         await ctx.send(embed=embed)
 
+    @commands.command()
+    async def succ(self, ctx, member):
+        embed = discord.Embed(title='sucks ducc', description=f"{ctx.message.author.mention} sucks off {member}",
+                              color=discord.Color.blurple())
+        r = requests.get("https://nekos.life/api/v2/img/bj")
+        res = r.json()
+        embed.set_image(url=res['url'])
+        await ctx.send(embed=embed, delete_after=20)
+
 
 
 def setup(client):
