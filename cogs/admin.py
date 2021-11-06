@@ -45,7 +45,7 @@ class admin(commands.Cog):
     @has_permissions(ban_members=True)
     @bot_has_permissions(ban_members=True)
     async def ban(self, ctx, member: commands.MemberConverter, *, reason=None):
-        await ctx.guild.ban(member, reason=reason)c
+        await ctx.guild.ban(member, reason=reason)
         await ctx.send(f"banned {member} for {reason}")
 
     @ban.error
