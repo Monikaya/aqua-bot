@@ -74,7 +74,10 @@ class utils(commands.Cog):
                 newpronounrole = await ctx.guild.create_role(name=pronouns, mentionable=False,
                                                              reason='made by pronoun cmd')
                 await ctx.message.author.add_roles(newpronounrole, reason="also pronounds command")
-            await ctx.send(f"sucessfully given the role '{pronouns}'")
+                embed = discord.Embed(title="added rple", description=f"added role '{pronouns}'",
+                                      color=discord.Colour.blurple())
+
+            await ctx.send(embed=embed)
         elif not allowedvalu:
             await ctx.send("uhh invalid role idk if ur trying to use no or any pronouns then it's like 'any.pronouns' or 'no.pronouns', lmk if there's anything else i'd need to whitelist tho")
 
@@ -90,7 +93,8 @@ class utils(commands.Cog):
         if allowedvalu:
             roletoremove = get(ctx.message.author.roles, name=pronoun)
             await ctx.message.author.remove_roles(roletoremove, reason="remove cmd pronouns")
-            await ctx.send("removed role")
+            embed = discord.Embed(title="removed role", description=f"removed role '{roletoremove}'", color=discord.Colour.blurple())
+            await ctx.send(embed=embed)
         elif allowedvalu == False:
             await ctx.send("you either don't have the role or it's invalid idk")
         elif allowedvalu == None:
