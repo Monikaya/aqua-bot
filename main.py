@@ -101,6 +101,8 @@ async def suggest(ctx, *, suggestion):
                               description=f"'{sender.mention}' suggested this:\n{suggestion}", color=discord.Colour.blurple())
         await webhook.send(embed=embed, username="Aqua Suggestions",
                            avatar_url="https://cdn.discordapp.com/attachments/875661506887426088/897269923636715541/amongie.jpg")
+        embed = discord.Embed(title="sent suggestion", description="sent your suggestion sucessfully thanks! :D", color=discord.Colour.blurple())
+        await ctx.send(embed)
 
 
 client.run('ODg3MTM3NTE3MDU1Mzg5NzA4.YT_xMg.MSG-cY5XUINRr8AhCL7-VCdtzmk')
