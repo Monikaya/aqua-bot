@@ -1,4 +1,6 @@
+import aiohttp
 import discord
+from discord import Webhook, AsyncWebhookAdapter
 from discord.ext import commands, tasks
 import os
 from itertools import cycle
@@ -86,6 +88,19 @@ async def on_command_error(ctx, error):
         em = discord.Embed(title=f"invalid command", description=f"command not found lolmao",
                            color=discord.Colour.blurple())
         await ctx.send(embed=em)
+
+
+@client.command()
+async def suggest(ctx, *, suggestion):
+    async with aiohttp.ClientSession() as session:
+        webhook = Webhook.from_url(
+            'https://discord.com/api/webhooks/908182336695332874/5ei956Ky0ucSwu7Z1UuxRw0yrdk2_OoAXnz0N5g_RphAEMXl-a10YQNvKIF8Jgw5sSSF',
+            adapter=AsyncWebhookAdapter(session))
+        sender = ctx.message.author
+        embed = discord.Embed(title=f"suggestion from {sender}",
+                              description=f"'{sender.mention}' suggested this:\n{suggestion}", color=discord.Colour.blurple())
+        await webhook.send(embed=embed, username="Aqua Suggestions",
+                           avatar_url="https://cdn.discordapp.com/attachments/875661506887426088/897269923636715541/amongie.jpg")
 
 
 client.run('ODg3MTM3NTE3MDU1Mzg5NzA4.YT_xMg.MSG-cY5XUINRr8AhCL7-VCdtzmk')
