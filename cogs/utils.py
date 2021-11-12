@@ -70,12 +70,13 @@ class utils(commands.Cog):
 
             if roleexists:
                 await ctx.message.author.add_roles(pronounrole, reason="pronoun cmd")
-                await ctx,send(f"gave you the role '{pronounrole}'")
+                embed = discord.Embed(title="added role", description=f"added role '{pronouns}'",
+                                      color=discord.Colour.blurple())
             elif not roleexists:
                 newpronounrole = await ctx.guild.create_role(name=pronouns, mentionable=False,
                                                              reason='made by pronoun cmd')
                 await ctx.message.author.add_roles(newpronounrole, reason="also pronounds command")
-                embed = discord.Embed(title="added rple", description=f"added role '{pronouns}'",
+                embed = discord.Embed(title="added role", description=f"added role '{pronouns}'",
                                       color=discord.Colour.blurple())
 
             await ctx.send(embed=embed)
