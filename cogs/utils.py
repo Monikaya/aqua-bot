@@ -70,6 +70,7 @@ class utils(commands.Cog):
 
             if roleexists:
                 await ctx.message.author.add_roles(pronounrole, reason="pronoun cmd")
+                await ctx,send(f"gave you the role '{pronounrole}'}")
             elif not roleexists:
                 newpronounrole = await ctx.guild.create_role(name=pronouns, mentionable=False,
                                                              reason='made by pronoun cmd')
