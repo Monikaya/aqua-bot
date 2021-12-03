@@ -10,7 +10,6 @@ from pretty_help import PrettyHelp, DefaultMenu
 
 def get_prefix(client, message):
     prefixlist = os.getcwd() + "/prefixes.json"
-    print(prefixlist)
     if not os.path.exists(prefixlist):
         with open(prefixlist, 'w') as f:
             f.write('{}')
