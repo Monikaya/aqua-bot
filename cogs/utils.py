@@ -68,6 +68,7 @@ class utils(commands.Cog):
 
         if allowedvalu == "yed":
             if get(ctx.guild.roles, name=pronouns):
+                pronouns = pronouns.lower
                 pronounrole = get(ctx.guild.roles, name=pronouns)
                 roleexists = "ys"
             else:
