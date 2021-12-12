@@ -3,6 +3,7 @@ import string
 import discord
 import requests
 from discord.ext import commands
+import os
 
 try:
     from pygelbooru import Gelbooru
