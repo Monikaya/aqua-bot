@@ -1,9 +1,17 @@
 import re
 import string
+import random
+
 import discord
 import requests
 from discord.ext import commands
 import os
+
+try:
+    import rule34
+except ImportError:
+    os.system("pip install rule34")
+    import rule34
 
 try:
     from pygelbooru import Gelbooru
@@ -102,6 +110,20 @@ class nsfw(commands.Cog):
                 await ctx.send(embed=embed)
         else:
             await ctx.send("channel  isn't nsfw smh")
+
+    @commands.command()
+    async def r34(self, ctx, *, tags):
+        if ctx.channel.is_nsfw():
+            r34 = rule34.Rule34()
+            img = await r34.getImages(tags=tags, singlePage=True)
+            img1 = random.choice(img)
+            sendimg = img1.file_url
+            embed = discord.Embed(color=discord.Colour.blurple())
+            embed.set_image(url=sendimg)
+            await ctx.send(embed=embed)
+
+        else:
+            await ctx.send("channel isn't nsfw lmao")
 
 
 def setup(client):
