@@ -55,24 +55,30 @@ class utils(commands.Cog):
     @commands.command()
     async def pronouns(self, ctx, pronouns):
         if "/" in pronouns:
-            allowedvalu = True
-        elif pronouns == "no.pronouns" or "any.pronouns":
-            allowedvalu = True
+            allowedvalu = "yed"
+        elif pronouns == "no.pronouns":
+            allowedvalu = "yed"
+        elif pronouns == "any.pronouns":
+            allowedvalu = "yed"
+            pronouns("alsoallowedagian")
+        elif pronouns == None:
+            allowedvalu = "noe"
         else:
-            allowedvalu = False
+            allowedvalu = "noe"
 
-        if allowedvalu:
+        if allowedvalu == "yed":
             if get(ctx.guild.roles, name=pronouns):
+                pronouns = pronouns.lower
                 pronounrole = get(ctx.guild.roles, name=pronouns)
-                roleexists = True
+                roleexists = "ys"
             else:
-                roleexists = False
+                roleexists = "nope"
 
-            if roleexists:
+            if roleexists == "ys":
                 await ctx.message.author.add_roles(pronounrole, reason="pronoun cmd")
                 embed = discord.Embed(title="added role", description=f"added role '{pronouns}'",
                                       color=discord.Colour.blurple())
-            elif not roleexists:
+            elif roleexists == "nope":
                 newpronounrole = await ctx.guild.create_role(name=pronouns, mentionable=False,
                                                              reason='made by pronoun cmd')
                 await ctx.message.author.add_roles(newpronounrole, reason="also pronounds command")
@@ -80,26 +86,29 @@ class utils(commands.Cog):
                                       color=discord.Colour.blurple())
 
             await ctx.send(embed=embed)
-        elif not allowedvalu:
+        elif allowedvalu == "noe":
             await ctx.send("uhh invalid role idk if ur trying to use no or any pronouns then it's like 'any.pronouns' or 'no.pronouns', lmk if there's anything else i'd need to whitelist tho")
 
     @commands.command()
     async def removepronouns(self, ctx, pronoun):
         if "/" in pronoun:
-            allowedvalu = True
-        elif pronoun == "no.pronouns" or "any.pronouns":
-            allowedvalu = True
+            allowedvalu = "yed"
+            print("valid")
+        elif pronoun == "no.pronouns":
+            allowedvalu = "yed"
+        elif pronoun == "any.pronouns":
+            allowedvalu = "yed"
         else:
-            allowedvalu = False
+            allowedvalu = "noe"
 
-        if allowedvalu:
+        if allowedvalu == "yed":
             roletoremove = get(ctx.message.author.roles, name=pronoun)
             await ctx.message.author.remove_roles(roletoremove, reason="remove cmd pronouns")
             embed = discord.Embed(title="removed role", description=f"removed role '{roletoremove}'", color=discord.Colour.blurple())
             await ctx.send(embed=embed)
-        elif allowedvalu == False:
+        elif allowedvalu == "noe":
             await ctx.send("you either don't have the role or it's invalid idk")
-        elif allowedvalu == None:
+        elif allowedvalu is None:
             await ctx.send("you either don't have the role or it's invalid idk")
 
 

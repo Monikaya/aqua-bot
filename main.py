@@ -1,14 +1,24 @@
+import json
+import os
+from itertools import cycle
+
 import aiohttp
 import discord
 from discord import Webhook, AsyncWebhookAdapter
 from discord.ext import commands, tasks
-import os
-from itertools import cycle
-import json
 from pretty_help import PrettyHelp, DefaultMenu
 
-
 def get_prefix(client, message):
+    prefixlist = os.getcwd() + "/prefixes.json"
+    if not os.path.exists(prefixlist):
+        with open(prefixlist, 'w') as f:
+            f.write('{}')
+        with open(prefixlist, 'r') as f:
+            prefixes = json.load(f)
+
+        prefixes[str(666)] = '-'
+        with open(prefixlist, "w") as f:
+            json.dump(prefixes, f, indent=4)
     try:
         with open('prefixes.json', 'r') as f:
             prefixes = json.load(f)
@@ -26,7 +36,7 @@ menu = DefaultMenu(delete_after_timeout=True, active_time=60)
 client = commands.Bot(command_prefix=get_prefix, help_command=PrettyHelp(color=discord.Colour.blurple(), menu=menu))
 
 status = cycle(
-    ['being sus', 'sus like impostor', 'am sus', 'is sus', 'among sussy', 'being best bot', 'peeing', 'playing mongie'])
+    ['being sus', 'sus like impostor', 'am sus', 'is sus', 'among sussy', 'peeing', 'playing mongie', 'sussy baka'])
 
 
 @client.command(hidden=True)
