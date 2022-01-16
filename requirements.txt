@@ -10,5 +10,3 @@ ffmpeg
 discord-pretty-help
 pandas==1.3.2
 pygelbooru
-import re
-import string

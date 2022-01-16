@@ -1,7 +1,6 @@
 import json
 import os
 from itertools import cycle
-
 import aiohttp
 import discord
 from discord import Webhook, AsyncWebhookAdapter
@@ -115,4 +114,4 @@ async def suggest(ctx, *, suggestion):
         await ctx.send(embed)
 
 
-client.run('ODg3MTM3NTE3MDU1Mzg5NzA4.YT_xMg.MSG-cY5XUINRr8AhCL7-VCdtzmk')
+client.run('OTMyMDY2Nzc1NjQ5MTEyMTg1.YeNk1A.QZyfXWiDfErPUMCHNeswtB4cOSI')
