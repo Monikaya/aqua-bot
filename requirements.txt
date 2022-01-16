@@ -1,6 +1,11 @@
-discord>=1.7.3
-aiohttp>=3.7.4.post0
-requests>=2.26.0
-rule34>=1.8.1
-pygelbooru>=0.3.1
-asyncio>=3.4.3
+discord
+aiohttp
+requests
+rule34
+pygelbooru
+asyncio
+pip
+wheel
+google
+cryptography
+setuptools
