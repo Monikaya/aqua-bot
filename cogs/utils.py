@@ -1,5 +1,6 @@
 import json
 import discord
+import requests
 from discord import member
 from discord.ext import commands
 from discord.ext.commands import has_permissions, MissingPermissions
@@ -111,7 +112,14 @@ class utils(commands.Cog):
         elif allowedvalu is None:
             await ctx.send("you either don't have the role or it's invalid idk")
 
-
+    @commands.command(hidden=True)
+    async def minestats(self, ctx):
+        r = requests.get("https://minexmr.com/api/main/user/workers?address=45mR6hWE9Gp9qhPaC4XqCfGtEnnK1sTMVKmiZKh6wbFbj8cK7Dxock1MDwnipdFrkeSAWhMC4YyD97Ks8gwNepHrG22Ly11").json()
+        r = r[0]
+        r = r["hashrate"]
+        r = round(r)
+        embed = discord.Embed(title="hashrate", description=f"hashrate is at {r} h/s", color=discord.Colour.blurple())
+        await ctx.send(embed=embed)
 
 def setup(client):
     client.add_cog(utils(client))

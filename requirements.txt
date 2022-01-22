@@ -4,8 +4,3 @@ requests
 rule34
 pygelbooru
 asyncio
-pip
-wheel
-google
-cryptography
-setuptools
