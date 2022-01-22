@@ -50,7 +50,7 @@ class nsfw(commands.Cog):
             await ctx.send("you aren't in nsfw channel")
 
     @commands.command(aliases=['toes'], brief='for the funny yes yes')
-    async def feet(self, ctx, *, bypass=None):
+    async def feet(self, ctx):
         channelnsfw = ctx.channel.is_nsfw()
         if channelnsfw:
             r = requests.get("https://nekos.life/api/v2/img/feetg")

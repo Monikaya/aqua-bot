@@ -1,10 +1,6 @@
-import asyncio
-import discord
-from discord.ext import commands, tasks
 import logging
 
-def gaysex():
-    asyncio.run(peepee())
+from discord.ext import commands
 
 
 class StartUp(commands.Cog):

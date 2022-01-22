@@ -2,7 +2,6 @@ import random
 import discord
 import requests
 from discord.ext import commands
-from discord import Webhook, AsyncWebhookAdapter
 from discord import *
 
 class fun(commands.Cog):

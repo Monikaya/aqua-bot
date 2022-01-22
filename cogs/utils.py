@@ -1,7 +1,6 @@
 import json
 import discord
 import requests
-from discord import member
 from discord.ext import commands
 from discord.ext.commands import has_permissions, MissingPermissions
 from discord.utils import get
@@ -19,7 +18,7 @@ class utils(commands.Cog):
                               color=discord.Colour.blurple())
 
         if nick == "reset":
-            mbed.description = f"nick reset sucessfully"
+            embed.description = f"nick reset sucessfully"
             await ctx.message.author.edit(nick=None)
             await ctx.send(embed=embed)
 
