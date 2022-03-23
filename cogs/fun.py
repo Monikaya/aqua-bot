@@ -103,7 +103,7 @@ class fun(commands.Cog):
         print(weebhook)
 
     @commands.command(brief="you can guess")
-    async def hentai(self, ctx):
+    async def cat(self, ctx):
         r = requests.get("https://nekos.life/api/v2/cat")
         res = r.json()
         embed = discord.Embed(title="cat", color=discord.Colour.blurple())
