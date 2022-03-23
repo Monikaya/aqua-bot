@@ -102,14 +102,6 @@ class fun(commands.Cog):
         await ctx.send("pee")
         print(weebhook)
 
-    @commands.command(brief="you can guess")
-    async def cat(self, ctx):
-        r = requests.get("https://nekos.life/api/v2/cat")
-        res = r.json()
-        embed = discord.Embed(title="cat", color=discord.Colour.blurple())
-        embed.set_image(url=res['url'])
-        await ctx.send(embed=embed)
-
 
 def setup(client):
     client.add_cog(fun(client))
