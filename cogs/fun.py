@@ -1,8 +1,8 @@
 import random
-import discord
+import nextcord
 import requests
-from discord.ext import commands
-from discord import *
+from nextcord.ext import commands
+from nextcord import *
 
 class fun(commands.Cog):
 
@@ -37,7 +37,7 @@ class fun(commands.Cog):
     async def hug(self, ctx, member: commands.MemberConverter):
         r = requests.get("https://nekos.life/api/v2/img/hug")
         res = r.json()
-        embed = discord.Embed(title=f"{ctx.message.author} hugged {member}", color=discord.Colour.blurple())
+        embed = nextcord.Embed(title=f"{ctx.message.author} hugged {member}", color=nextcord.Colour.blurple())
         embed.set_footer(text="made by Aquazarine#0001")
         embed.set_image(url=res['url'])
         await ctx.send(embed=embed)
@@ -46,7 +46,7 @@ class fun(commands.Cog):
     async def baka(self, ctx, member: commands.MemberConverter):
         r = requests.get("https://nekos.life/api/v2/img/baka")
         res = r.json()
-        embed = discord.Embed(title=f"{member} is sussy baka", color=discord.Colour.blurple())
+        embed = nextcord.Embed(title=f"{member} is sussy baka", color=nextcord.Colour.blurple())
         embed.set_footer(text="made by Aquazarine#0001")
         embed.set_image(url=res['url'])
         await ctx.send(embed=embed)
@@ -56,7 +56,7 @@ class fun(commands.Cog):
         r = requests.get("https://nekos.life/api/v2/img/poke")
         res = r.json()
         sender = ctx.message.author
-        embed = discord.Embed(title=f"{member} got poked by {sender}", color=discord.Colour.blurple())
+        embed = nextcord.Embed(title=f"{member} got poked by {sender}", color=nextcord.Colour.blurple())
         embed.set_image(url=res['url'])
         await ctx.send(embed=embed)
 
@@ -65,7 +65,7 @@ class fun(commands.Cog):
         r = requests.get("https://nekos.life/api/v2/img/cuddle")
         res = r.json()
         sender = ctx.message.author
-        embed = discord.Embed(title=f"{sender} cuddles {member}", color=discord.Colour.blurple())
+        embed = nextcord.Embed(title=f"{sender} cuddles {member}", color=nextcord.Colour.blurple())
         embed.set_image(url=res['url'])
         await ctx.send(embed=embed)
 
@@ -74,7 +74,7 @@ class fun(commands.Cog):
         r = requests.get("https://nekos.life/api/v2/img/pat")
         res = r.json()
         sender = ctx.message.author
-        embed = discord.Embed(title=f"{sender} pats {member}", color=discord.Colour.blurple())
+        embed = nextcord.Embed(title=f"{sender} pats {member}", color=nextcord.Colour.blurple())
         embed.set_image(url=res['url'])
         await ctx.send(embed=embed)
 

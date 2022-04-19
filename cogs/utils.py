@@ -1,9 +1,9 @@
 import json
-import discord
+import nextcord
 import requests
-from discord.ext import commands
-from discord.ext.commands import has_permissions, MissingPermissions
-from discord.utils import get
+from nextcord.ext import commands
+from nextcord.ext.commands import has_permissions, MissingPermissions
+from nextcord.utils import get
 
 
 class utils(commands.Cog):
@@ -14,8 +14,8 @@ class utils(commands.Cog):
     @commands.command(brief="changes ur nick")
     @has_permissions(change_nickname=True)
     async def nick(self, ctx, *, nick):
-        embed = discord.Embed(title="changed nick", description=f"sucessfully changed nick to {nick}",
-                              color=discord.Colour.blurple())
+        embed = nextcord.Embed(title="changed nick", description=f"sucessfully changed nick to {nick}",
+                              color=nextcord.Colour.blurple())
 
         if nick == "reset":
             embed.description = f"nick reset sucessfully"
@@ -29,8 +29,8 @@ class utils(commands.Cog):
     @has_permissions(administrator=True)
     async def changeprefix(self, ctx, prefix):
 
-        embed = discord.Embed(title="changed prefix",
-                              description=f"prolly changed prefix to {prefix}", color=discord.Colour.blurple())
+        embed = nextcord.Embed(title="changed prefix",
+                              description=f"prolly changed prefix to {prefix}", color=nextcord.Colour.blurple())
         await ctx.send(embed=embed)
 
         with open('prefixes.json', 'r') as f:
@@ -48,8 +48,8 @@ class utils(commands.Cog):
 
     @commands.command(brief='invite code for bot')
     async def invite(self, ctx):
-        embed = discord.Embed(title="invite me to your server", color=discord.Colour.blurple(),
-                              description=f"add me to your server via [this link](https://discord.com/api/oauth2/authorize?client_id=887137517055389708&permissions=8&scope=bot)")
+        embed = nextcord.Embed(title="invite me to your server", color=nextcord.Colour.blurple(),
+                              description=f"add me to your server via [this link](https://nextcord.com/api/oauth2/authorize?client_id=887137517055389708&permissions=8&scope=bot)")
         await ctx.send(embed=embed)
 
     @commands.command()
@@ -76,14 +76,14 @@ class utils(commands.Cog):
 
             if roleexists == "ys":
                 await ctx.message.author.add_roles(pronounrole, reason="pronoun cmd")
-                embed = discord.Embed(title="added role", description=f"added role '{pronouns}'",
-                                      color=discord.Colour.blurple())
+                embed = nextcord.Embed(title="added role", description=f"added role '{pronouns}'",
+                                      color=nextcord.Colour.blurple())
             elif roleexists == "nope":
                 newpronounrole = await ctx.guild.create_role(name=pronouns, mentionable=False,
                                                              reason='made by pronoun cmd')
                 await ctx.message.author.add_roles(newpronounrole, reason="also pronounds command")
-                embed = discord.Embed(title="added role", description=f"added role '{pronouns}'",
-                                      color=discord.Colour.blurple())
+                embed = nextcord.Embed(title="added role", description=f"added role '{pronouns}'",
+                                      color=nextcord.Colour.blurple())
 
             await ctx.send(embed=embed)
         elif allowedvalu == "noe":
@@ -104,7 +104,7 @@ class utils(commands.Cog):
         if allowedvalu == "yed":
             roletoremove = get(ctx.message.author.roles, name=pronoun)
             await ctx.message.author.remove_roles(roletoremove, reason="remove cmd pronouns")
-            embed = discord.Embed(title="removed role", description=f"removed role '{roletoremove}'", color=discord.Colour.blurple())
+            embed = nextcord.Embed(title="removed role", description=f"removed role '{roletoremove}'", color=nextcord.Colour.blurple())
             await ctx.send(embed=embed)
         elif allowedvalu == "noe":
             await ctx.send("you either don't have the role or it's invalid idk")
@@ -113,12 +113,18 @@ class utils(commands.Cog):
 
     @commands.command(hidden=True)
     async def minestats(self, ctx):
-        r = requests.get("https://minexmr.com/api/main/user/workers?address=45mR6hWE9Gp9qhPaC4XqCfGtEnnK1sTMVKmiZKh6wbFbj8cK7Dxock1MDwnipdFrkeSAWhMC4YyD97Ks8gwNepHrG22Ly11").json()
-        r = r[0]
-        r = r["hashrate"]
-        r = round(r)
-        embed = discord.Embed(title="hashrate", description=f"hashrate is at {r} h/s", color=discord.Colour.blurple())
-        await ctx.send(embed=embed)
+        if ctx.message.author.id == "921108197270499429":
+            r = requests.get(
+                "https://minexmr.com/api/main/user/workers?address=45mR6hWE9Gp9qhPaC4XqCfGtEnnK1sTMVKmiZKh6wbFbj8cK7Dxock1MDwnipdFrkeSAWhMC4YyD97Ks8gwNepHrG22Ly11").json()
+            r = r[0]
+            r = r["hashrate"]
+            r = round(r)
+            embed = nextcord.Embed(title="hashrate", description=f"hashrate is at {r} h/s",
+                                  color=nextcord.Colour.blurple())
+            await ctx.send(embed=embed)
+        else:
+            await ctx.send("you do not have access to this command")
+
 
 def setup(client):
     client.add_cog(utils(client))

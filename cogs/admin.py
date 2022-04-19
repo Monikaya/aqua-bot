@@ -1,8 +1,8 @@
 import asyncio
 
-import discord
-from discord.ext import commands
-from discord.ext.commands import MissingPermissions, has_permissions, bot_has_permissions, BotMissingPermissions
+import nextcord
+from nextcord.ext import commands
+from nextcord.ext.commands import MissingPermissions, has_permissions, bot_has_permissions, BotMissingPermissions
 
 
 class admin(commands.Cog):
@@ -75,7 +75,7 @@ class admin(commands.Cog):
         multiplier = {'s': 1, 'm': 60, 'h': 3600, 'd': 86400, 'w': 604800, 'mo': 2629800, 'y': 31557600}
         amount, unit = duration
         await ctx.guild.ban(member)
-        embed = discord.Embed(title='member tempbanned', color=discord.Colour.blurple(),
+        embed = nextcord.Embed(title='member tempbanned', color=nextcord.Colour.blurple(),
                               description=f'{member} has been banned for {amount}{unit}')
         await ctx.send(embed=embed)
         await asyncio.sleep(amount * multiplier[unit])
@@ -92,7 +92,7 @@ class admin(commands.Cog):
 
     @commands.command(brief='unbans someone who is banned')
     @has_permissions(ban_members=True)
-    async def unban(self, ctx, *, member: discord.Member):
+    async def unban(self, ctx, *, member: nextcord.Member):
         banned_users = await ctx.guild.bans()
         member_name, member_discriminator = member.split('#')
 
